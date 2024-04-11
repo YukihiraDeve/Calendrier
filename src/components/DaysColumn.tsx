@@ -1,22 +1,31 @@
 import React from 'react';
 import Day from './Day';
-import { addDays } from 'date-fns';
+import { format, addDays } from 'date-fns';
+import { fr } from 'date-fns/locale'; // Importez les types ici
+import { Task } from './types'; // Importez les types ici
 
-const DaysColumn: React.FC = () => {
-  const startDate = new Date(); // Date du jour
-  const days = [...Array(5)].map((_, i) => (
-    <Day
-      key={i}
-      isOdd={i % 2 !== 0}
-      date={addDays(startDate, i)} 
-    />
-  ));
+interface DaysColumnProps {
+    tasks: Task[];
+  }
 
-  return (
-    <section className="days-column">
-      {days}
-    </section>
-  );
-}
+  const DaysColumn: React.FC<DaysColumnProps> = ({ tasks }) => {
+    const startDate = new Date(); // Date du jour
+    const days = [...Array(5)].map((_, i) => (
+      <Day
+        key={i}
+        isOdd={i % 2 !== 0}
+        date={addDays(startDate, i)}
+        tasks={tasks.filter(task => task.day === format(addDays(startDate, i), 'EEEE', { locale: fr }))}
+      />
+    ));
+  
+    return (
+      <section className="days-column">
+        {days}
+      </section>
+    );
+  }
 
 export default DaysColumn;
+
+
