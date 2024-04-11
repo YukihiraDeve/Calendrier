@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CalendarHeader from './components/CalendarHeader';
+import TimeColumn from './components/TimeColumn';
+import DaysColumn from './components/DaysColumn';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="calendar-container">
+      <div className="app">
+        <CalendarHeader />
+        <div className="calendar-body">
+          <TimeColumn />
+          <DaysColumn />
+        </div>
+      </div>
     </div>
   );
 }
