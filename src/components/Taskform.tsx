@@ -1,5 +1,5 @@
 import React from 'react';
-import { TaskDetails } from './types'; // Assurez-vous que cet import est correct
+import { TaskDetails } from './types'; 
 
 interface TaskFormProps {
   addTask: (taskDetails: TaskDetails) => void;
@@ -13,16 +13,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
     const startTime = (form.elements.namedItem('startTime') as HTMLInputElement).value;
     const endTime = (form.elements.namedItem('endTime') as HTMLInputElement).value;
     const day = (form.elements.namedItem('day') as HTMLInputElement).value;
-    const description = (form.elements.namedItem('description') as HTMLInputElement)?.value; // Optionnel
-    const date = (form.elements.namedItem('date') as HTMLInputElement)?.value; // Optionnel
+    const description = (form.elements.namedItem('description') as HTMLInputElement)?.value;
+    const date = (form.elements.namedItem('date') as HTMLInputElement)?.value; 
 
     const taskDetails: TaskDetails = {
       title,
       startTime,
       endTime,
       day,
-      description, // Ajoutez seulement si votre type le permet
-      date // Ajoutez seulement si votre type le permet
+      description,
+      date 
     };
     addTask(taskDetails);
   };
@@ -42,10 +42,10 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
         Day: <input type="text" name="day" required />
       </label>
       <label>
-        Description: <input type="text" name="description" /> {/* Optionnel */}
+        Description: <input type="text" name="description" /> 
       </label>
       <label>
-        Date: <input type="date" name="date" /> {/* Optionnel */}
+        Date: <input type="date" name="date" /> 
       </label>
       <button type="submit">Submit</button>
     </form>
